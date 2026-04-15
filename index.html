@@ -34,10 +34,9 @@
       --stripe-color: #e8e8e8;
     }
 
-    /* === THE ULTIMATE HERO FIX === */
+    /* === HERO (FIXED STRETCH) === */
     .hero {
       position: relative; 
-      /* We use a fixed height and max-height to ensure it NEVER grows */
       height: 700px !important; 
       max-height: 700px !important;
       min-height: 600px !important;
@@ -47,37 +46,20 @@
       text-align: center; 
       color: var(--primary-white); 
       overflow: hidden;
-      /* This ensures the background pattern doesn't scale weirdly */
       background-attachment: local; 
     }
-    
     .hero::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       background: linear-gradient(135deg, rgba(0,0,0,0.88) 0%, rgba(26,26,26,0.92) 50%, rgba(0,0,0,0.88) 100%);
       z-index: 1;
     }
-    
     .hero::after {
-      content: ''; position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: repeating-linear-gradient(
-        -45deg, transparent, transparent 20px,
-        rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 40px
-      );
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 40px);
       z-index: 1;
       background-size: 100% 100%;
     }
-    
-    .hero-content { 
-      position: relative; 
-      z-index: 2; 
-      max-width: 800px; 
-      padding: 20px;
-      /* Remove auto-margins that might be pushing content */
-      margin-top: 0; 
-    }
-    
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; margin-top: 0; }
     .hero-logo {
       width: 180px; height: 180px; margin: 0 auto 20px;
       border-radius: 16px; overflow: hidden;
@@ -85,53 +67,50 @@
       display: flex; align-items: center; justify-content: center;
     }
     .hero-logo img { width: 100%; height: 100%; object-fit: cover; }
-    
-    .hero-subtitle-top {
-      font-size: 0.85rem;
-      letter-spacing: 4px; text-transform: uppercase;
-      color: var(--kw-red); margin-bottom: 12px; font-weight: 500;
-    }
     .hero h1 { font-size: 3.2rem; font-weight: 900; margin-bottom: 12px; line-height: 1.1; }
     .hero h1 span { color: var(--kw-red); }
-    .hero-tagline { font-size: 1.1rem; font-weight: 300; margin-bottom: 30px; opacity: 0.9; }
-    
-    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    
-    /* === REMAINING STYLES === */
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 28px; font-size: 0.95rem; font-weight: 600; border-radius: 4px;
-      cursor: pointer; transition: 0.3s; border: 2px solid transparent;
+
+    /* === EPISODES CAROUSEL CSS === */
+    .carousel {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 20px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: var(--kw-red) var(--stripe-color);
     }
+    .carousel::-webkit-scrollbar { height: 8px; }
+    .carousel::-webkit-scrollbar-thumb { background: var(--kw-red); border-radius: 10px; }
+    .episode-card {
+      flex: 0 0 350px;
+      scroll-snap-align: start;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .episode-thumbnail img { width: 100%; height: 200px; object-fit: cover; }
+    .episode-info { padding: 20px; text-align: left; }
+    .episode-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 15px; color: var(--text-dark); }
+
+    /* === GENERAL UI === */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-size: 0.95rem; font-weight: 600; border-radius: 4px; cursor: pointer; transition: 0.3s; border: 2px solid transparent; }
     .btn-primary { background: var(--kw-red); color: var(--primary-white); border-color: var(--kw-red); }
     .btn-outline { background: transparent; color: var(--primary-white); border-color: var(--primary-white); }
-
-    .platforms-section { background: var(--primary-dark); padding: 40px 0; text-align: center; position: relative; z-index: 10; }
-    .platforms-section h3 { color: var(--primary-white); font-size: 1.3rem; margin-bottom: 30px; }
+    .platforms-section { background: var(--primary-dark); padding: 40px 0; text-align: center; }
     .platform-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-    .platform-link {
-      display: flex; align-items: center; gap: 10px; padding: 12px 20px; 
-      background: rgba(255,255,255,0.08); border-radius: 8px; color: var(--primary-white);
-      transition: 0.3s; border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .about-section { background: var(--primary-white); position: relative; z-index: 10;}
+    .platform-link { display: flex; align-items: center; gap: 10px; padding: 12px 20px; background: rgba(255,255,255,0.08); border-radius: 8px; color: var(--primary-white); border: 1px solid rgba(255,255,255,0.1); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .about-image-wrapper .cover-art { width: 100%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
-    .about-tagline { letter-spacing: 3px; text-transform: uppercase; color: var(--kw-red); margin-bottom: 10px; font-weight: 600; font-size: 0.8rem; }
-    .about-content h2 { font-size: 2.3rem; margin-bottom: 20px; }
-
-    .guest-section { background: var(--primary-dark); color: var(--primary-white); position: relative; z-index: 10;}
+    .cover-art { width: 100%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
     .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
     .benefit-card { padding: 25px; background: rgba(255,255,255,0.05); border-radius: 8px; }
 
-    footer { background: #111; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 24px; position: relative; z-index: 10; }
-
     @media (max-width: 992px) {
-      .about-grid { grid-template-columns: 1fr; text-align: center; }
-      .benefits-grid { grid-template-columns: 1fr; }
+      .about-grid, .benefits-grid { grid-template-columns: 1fr; }
       .hero { height: 600px !important; }
       .hero h1 { font-size: 2.2rem; }
+      .episode-card { flex: 0 0 85%; }
     }
   </style>
 </head>
@@ -139,9 +118,7 @@
 
 <section class="hero" id="top">
   <div class="hero-content">
-    <div class="hero-logo">
-      <img src="https://joshymellow.github.io/Phil_Nykamp/logo.png" alt="Logo">
-    </div>
+    <div class="hero-logo"><img src="https://joshymellow.github.io/Phil_Nykamp/logo.png" alt="Logo"></div>
     <p class="hero-subtitle-top">Real Estate • Community • West Michigan</p>
     <h1>The Keys To <span>The Community</span></h1>
     <p class="hero-tagline">Your go-to podcast for real estate education and community connection in West Michigan — Hosted by Phil Nykamp</p>
@@ -152,7 +129,6 @@
   </div>
 </section>
 
-
 <section class="about-section section-padding" id="about">
   <div class="container">
     <div class="about-grid">
@@ -161,7 +137,7 @@
       </div>
       <div class="about-content">
          <h2>The Keys To The Community</h2>
-        <p class="about-tagline">Phil Nykamp</p>
+        <p class="about-tagline" style="letter-spacing: 3px; text-transform: uppercase; color: var(--kw-red); margin-bottom: 10px; font-weight: 600; font-size: 0.8rem;">Phil Nykamp</p>
         <p><strong>Your go-to podcast for all things real estate and community in West Michigan! </strong> Hosted by Phil Nykamp, a Keller Williams Harbortown agent with 28 years of customer service experience and deep local roots, The Keys to the Community focuses on real estate education and connecting with the people who make the community special.</p>
         <p>Each episode features interviews with local business owners, community leaders, and industry professionals, offering insight into the real estate market and the vibrant life in West Michigan’s neighborhoods. </p>
         <p>Whether you’re a first-time homebuyer, a seller looking to navigate the market, or simply interested in the happenings in your community, this podcast is the perfect blend of real estate education and community connection.</p>
@@ -182,28 +158,29 @@
   </div>
 </section>
 
-  <section class="episodes-section section-padding" id="episodes">
+<section class="episodes-section section-padding" id="episodes">
   <div class="container">
+    <h2 style="margin-bottom: 30px;">Latest Episodes</h2>
     <div class="carousel">
       <div class="episode-card">
         <div class="episode-thumbnail"><img src="https://joshymellow.github.io/Phil_Nykamp/cover.jpg"></div>
         <div class="episode-info">
           <div class="episode-title">EP 01: The Market Today</div>
-          <a href="#" class="btn-primary" style="font-size: 0.8rem; padding: 5px 10px;">Play Episode</a>
+          <a href="#" class="btn btn-primary" style="font-size: 0.8rem; padding: 8px 15px;">Play Episode</a>
         </div>
       </div>
       <div class="episode-card">
         <div class="episode-thumbnail"><img src="https://joshymellow.github.io/Phil_Nykamp/cover.jpg"></div>
         <div class="episode-info">
           <div class="episode-title">EP 02: Investing in GR</div>
-          <a href="#" class="btn-primary" style="font-size: 0.8rem; padding: 5px 10px;">Play Episode</a>
+          <a href="#" class="btn btn-primary" style="font-size: 0.8rem; padding: 8px 15px;">Play Episode</a>
         </div>
       </div>
       <div class="episode-card">
         <div class="episode-thumbnail"><img src="https://joshymellow.github.io/Phil_Nykamp/cover.jpg"></div>
         <div class="episode-info">
           <div class="episode-title">EP 03: Community Leaders</div>
-          <a href="#" class="btn-primary" style="font-size: 0.8rem; padding: 5px 10px;">Play Episode</a>
+          <a href="#" class="btn btn-primary" style="font-size: 0.8rem; padding: 8px 15px;">Play Episode</a>
         </div>
       </div>
     </div>
@@ -212,30 +189,30 @@
   
 <section class="guest-section section-padding">
   <div class="container">
-    <p class="about-tagline">Get Involved</p>
-    <h2 style="margin-bottom: 20px;">Be a Guest on the Show</h2>
+    <p class="about-tagline" style="letter-spacing: 3px; text-transform: uppercase; color: var(--kw-red); margin-bottom: 10px; font-weight: 600; font-size: 0.8rem;">Get Involved</p>
+    <h2 style="margin-bottom: 20px; color: white;">Be a Guest on the Show</h2>
     <div class="benefits-grid">
       <div class="benefit-card">
         <i class="fas fa-bullhorn" style="color: var(--kw-red); font-size: 1.8rem; margin-bottom: 15px;"></i>
         <h4 style="color: white; margin-bottom: 10px;">Share Your Story</h4>
-        <p>Highlight your business or community project to our dedicated local listeners.</p>
+        <p style="color: #ccc;">Highlight your business or community project to our dedicated local listeners.</p>
       </div>
       <div class="benefit-card">
         <i class="fas fa-network-wired" style="color: var(--kw-red); font-size: 1.8rem; margin-bottom: 15px;"></i>
         <h4 style="color: white; margin-bottom: 10px;">Expand Your Reach</h4>
-        <p>Connect with a broader audience and build your professional network.</p>
+        <p style="color: #ccc;">Connect with a broader audience and build your professional network.</p>
       </div>
       <div class="benefit-card">
         <i class="fas fa-chart-line" style="color: var(--kw-red); font-size: 1.8rem; margin-bottom: 15px;"></i>
         <h4 style="color: white; margin-bottom: 10px;">Exposure</h4>
-        <p>Get high-quality audio and video content to share on your own platforms.</p>
+        <p style="color: #ccc;">Get high-quality audio and video content to share on your own platforms.</p>
       </div>
     </div>
-    <a href="#" class="btn btn-primary" style="margin-top: 20px;">Apply To Be A Guest</a>
+    <a href="#" class="btn btn-primary" style="margin-top: 30px;">Apply To Be A Guest</a>
   </div>
 </section>
 
-<footer>
+<footer style="background: #111; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 24px;">
   <p>&copy; 2026 The Keys To The Community. All Rights Reserved.</p>
 </footer>
 
