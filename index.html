@@ -24,13 +24,11 @@
     
     :root {
       --kw-red: #D50000;
-      --kw-red-hover: #A30000;
+      --brand-blue: #011b3e; /* Updated Brand Color */
       --primary-dark: #1a1a1a;
       --primary-white: #ffffff;
       --accent-gray: #f5f5f5;
       --text-dark: #1a1a1a;
-      --text-medium: #555555;
-      --text-light: #888888;
       --stripe-color: #e8e8e8;
     }
 
@@ -70,7 +68,7 @@
     .hero h1 { font-size: 3.2rem; font-weight: 900; margin-bottom: 12px; line-height: 1.1; }
     .hero h1 span { color: var(--kw-red); }
 
-    /* === EPISODES CAROUSEL CSS === */
+    /* === EPISODES CAROUSEL === */
     .carousel {
       display: flex;
       gap: 24px;
@@ -78,10 +76,10 @@
       padding-bottom: 20px;
       scroll-snap-type: x mandatory;
       scrollbar-width: thin;
-      scrollbar-color: var(--kw-red) var(--stripe-color);
+      scrollbar-color: var(--brand-blue) var(--stripe-color);
     }
     .carousel::-webkit-scrollbar { height: 8px; }
-    .carousel::-webkit-scrollbar-thumb { background: var(--kw-red); border-radius: 10px; }
+    .carousel::-webkit-scrollbar-thumb { background: var(--brand-blue); border-radius: 10px; }
     .episode-card {
       flex: 0 0 350px;
       scroll-snap-align: start;
@@ -94,10 +92,39 @@
     .episode-info { padding: 20px; text-align: left; }
     .episode-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 15px; color: var(--text-dark); }
 
-    /* === GENERAL UI === */
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-size: 0.95rem; font-weight: 600; border-radius: 4px; cursor: pointer; transition: 0.3s; border: 2px solid transparent; }
-    .btn-primary { background: var(--kw-red); color: var(--primary-white); border-color: var(--kw-red); }
-    .btn-outline { background: transparent; color: var(--primary-white); border-color: var(--primary-white); }
+    /* === BUTTONS (NEW COLOR) === */
+    .btn { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px; 
+      padding: 12px 28px; 
+      font-size: 0.95rem; 
+      font-weight: 600; 
+      border-radius: 4px; 
+      cursor: pointer; 
+      transition: 0.3s; 
+      border: 2px solid transparent; 
+    }
+    .btn-primary { 
+      background: var(--brand-blue); 
+      color: var(--primary-white); 
+      border-color: var(--brand-blue); 
+    }
+    .btn-primary:hover {
+      background: #002a61;
+      border-color: #002a61;
+    }
+    .btn-outline { 
+      background: transparent; 
+      color: var(--primary-white); 
+      border-color: var(--primary-white); 
+    }
+    .btn-outline:hover {
+      background: var(--primary-white);
+      color: var(--brand-blue);
+    }
+
+    /* === OTHER SECTIONS === */
     .platforms-section { background: var(--primary-dark); padding: 40px 0; text-align: center; }
     .platform-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
     .platform-link { display: flex; align-items: center; gap: 10px; padding: 12px 20px; background: rgba(255,255,255,0.08); border-radius: 8px; color: var(--primary-white); border: 1px solid rgba(255,255,255,0.1); }
