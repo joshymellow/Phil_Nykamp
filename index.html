@@ -58,7 +58,6 @@
     .hero-logo {
       width: 200px; height: 200px; margin: 0 auto 24px;
       border-radius: 16px; overflow: hidden;
-      border: none;
       box-shadow: 0 10px 40px rgba(0,0,0,0.3);
       display: flex; align-items: center; justify-content: center;
     }
@@ -72,6 +71,7 @@
     .hero h1 span { color: var(--kw-red); }
     .hero-tagline { font-size: 1.25rem; font-weight: 300; margin-bottom: 40px; opacity: 0.9; }
     .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 14px 32px; font-family: 'Inter', sans-serif;
@@ -84,12 +84,10 @@
     .btn-outline:hover { background: var(--primary-white); color: var(--primary-dark); transform: translateY(-2px); }
 
     /* === ABOUT === */
-    .about-section { background: var(--primary-white); }
     .about-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 60px; align-items: stretch;
     }
-    .about-image-wrapper { height: 100%; }
     .about-image-wrapper .cover-art {
       width: 100%; height: 100%; object-fit: cover;
       border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
@@ -101,10 +99,10 @@
     }
     .about-content h2 { font-size: 2.5rem; margin-bottom: 24px; color: var(--text-dark); }
     .about-content p { font-size: 1.05rem; color: var(--text-medium); margin-bottom: 16px; line-height: 1.8; }
-    .about-content .area-focus {
-      display: inline-block; margin-top: 16px; padding: 8px 20px;
+    .area-focus {
+      display: inline-block; padding: 8px 20px;
       background: var(--accent-gray); border-left: 4px solid var(--kw-red);
-      font-weight: 600; color: var(--text-dark); font-size: 0.95rem;
+      font-weight: 600; color: var(--text-dark); font-size: 0.95rem; margin-bottom: 24px;
     }
 
     /* === PLATFORMS === */
@@ -121,9 +119,6 @@
     }
     .platform-link:hover { background: rgba(255,255,255,0.15); transform: translateY(-3px); border-color: var(--kw-red); }
     .platform-link i { font-size: 1.8rem; }
-    .platform-link .fa-youtube { color: #FF0000; }
-    .platform-link .fa-apple { color: #A855F7; }
-    .platform-link .fa-spotify { color: #1DB954; }
 
     /* === EPISODES === */
     .episodes-section { background: var(--accent-gray); }
@@ -136,60 +131,36 @@
     .episodes-header h2 { font-size: 2.5rem; color: var(--text-dark); }
     .carousel {
       display: flex; gap: 24px; overflow-x: auto;
-      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-      padding: 8px 0 24px; scrollbar-width: thin;
-      scrollbar-color: var(--kw-red) var(--stripe-color);
+      scroll-snap-type: x mandatory; padding: 8px 0 24px;
+      scrollbar-width: thin; scrollbar-color: var(--kw-red) var(--stripe-color);
     }
     .carousel::-webkit-scrollbar { height: 6px; }
-    .carousel::-webkit-scrollbar-track { background: var(--stripe-color); border-radius: 3px; }
     .carousel::-webkit-scrollbar-thumb { background: var(--kw-red); border-radius: 3px; }
     .episode-card {
       flex: 0 0 calc(33.333% - 16px); min-width: 300px;
       scroll-snap-align: start; background: var(--primary-white);
       border-radius: 8px; overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .episode-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
-    .episode-thumbnail {
-      position: relative; width: 100%; padding-top: 56.25%;
-      background: #000; overflow: hidden;
-    }
-    .episode-thumbnail img {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%; object-fit: cover;
-    }
-    .episode-thumbnail .play-overlay {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60px; height: 60px;
-      background: rgba(213, 0, 0, 0.9); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
       transition: all 0.3s ease;
     }
-    .episode-card:hover .play-overlay { background: var(--kw-red); transform: translate(-50%, -50%) scale(1.1); }
-    .play-overlay i { color: white; font-size: 1.5rem; margin-left: 4px; }
+    .episode-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+    .episode-thumbnail { position: relative; width: 100%; padding-top: 56.25%; background: #000; overflow: hidden; }
+    .episode-thumbnail img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+    .play-overlay {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 60px; height: 60px; background: rgba(213, 0, 0, 0.9); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; transition: 0.3s;
+    }
     .episode-info { padding: 20px; }
-    .episode-number {
-      font-size: 0.75rem; font-weight: 700; color: var(--kw-red);
-      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;
-    }
-    .episode-title {
-      font-family: 'Montserrat', sans-serif; font-size: 1.15rem;
-      font-weight: 700; color: var(--text-dark); margin-bottom: 8px;
-    }
-    .episode-link {
-      font-size: 0.85rem; color: var(--kw-red); font-weight: 600;
-      display: inline-flex; align-items: center; gap: 6px;
-      transition: gap 0.3s ease;
-    }
-    .episode-link:hover { gap: 10px; }
+    .episode-number { font-size: 0.75rem; font-weight: 700; color: var(--kw-red); text-transform: uppercase; margin-bottom: 8px; }
+    .episode-title { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .episode-link { font-size: 0.85rem; color: var(--kw-red); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: 0.3s; }
     .carousel-nav { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
     .carousel-btn {
       width: 44px; height: 44px; border-radius: 50%;
       border: 2px solid var(--primary-dark); background: transparent;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s ease; font-size: 1rem; color: var(--primary-dark);
+      transition: all 0.3s ease; color: var(--primary-dark);
     }
     .carousel-btn:hover { background: var(--kw-red); border-color: var(--kw-red); color: white; }
 
@@ -198,14 +169,6 @@
       background: var(--primary-dark); color: var(--primary-white);
       text-align: center; position: relative; overflow: hidden;
     }
-    .guest-section::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: repeating-linear-gradient(
-        -45deg, transparent, transparent 30px,
-        rgba(255,255,255,0.02) 30px, rgba(255,255,255,0.02) 60px
-      );
-    }
     .guest-content { position: relative; z-index: 2; }
     .guest-section .section-tag {
       font-family: 'Inter', sans-serif; font-size: 0.8rem;
@@ -213,11 +176,6 @@
       color: var(--kw-red); margin-bottom: 12px; font-weight: 600;
     }
     .guest-section h2 { font-size: 2.8rem; margin-bottom: 20px; }
-    .guest-section .guest-desc {
-      font-size: 1.1rem; opacity: 0.85;
-      margin-bottom: 40px; line-height: 1.8;
-      text-align: center; width: 100%;
-    }
     .benefits-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 32px; margin-bottom: 48px; text-align: left;
@@ -227,16 +185,14 @@
       border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);
       transition: all 0.3s ease;
     }
-    .benefit-card:hover { background: rgba(255,255,255,0.08); border-color: var(--kw-red); transform: translateY(-4px); }
-    .benefit-card .benefit-icon { font-size: 2rem; color: var(--kw-red); margin-bottom: 16px; }
-    .benefit-card h4 {
-      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700;
-      color: var(--kw-red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
-    }
+    .benefit-card:hover { border-color: var(--kw-red); transform: translateY(-4px); }
+    .benefit-card h4 { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; color: var(--kw-red); text-transform: uppercase; margin-bottom: 12px; }
     .benefit-card p { font-size: 0.95rem; opacity: 0.8; line-height: 1.7; }
+
     .guest-cta-wrapper { margin-top: 16px; }
     .guest-cta-wrapper p { font-size: 1rem; opacity: 0.85; margin-bottom: 20px; }
-    .guest-cta-wrapper a.icons-link { color: var(--kw-red); text-decoration: underline; font-weight: 600; }
+    .icons-link { color: var(--kw-red); text-decoration: underline; font-weight: 600; }
+    
     .btn-guest {
       background: var(--kw-red); color: white;
       padding: 16px 40px; font-size: 1.05rem; font-weight: 700;
@@ -247,38 +203,21 @@
     }
     .btn-guest:hover { background: var(--kw-red-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(213,0,0,0.4); }
 
-    /* === FOOTER === */
     footer { background: #111; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 24px; }
-    .footer-brand { margin-bottom: 16px; }
-    .footer-brand a { color: var(--primary-white); font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 700; }
-    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.85rem; transition: color 0.3s ease; }
-    .footer-links a:hover { color: var(--kw-red); }
-    .footer-copy { font-size: 0.8rem; opacity: 0.5; }
 
-    /* === RESPONSIVE === */
     @media (max-width: 992px) {
       .about-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
       .about-image-wrapper { display: flex; justify-content: center; }
-      .about-image-wrapper .cover-art { max-width: 360px; height: auto; }
+      .about-image-wrapper .cover-art { max-width: 360px; }
       .benefits-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 2.5rem; }
-      .about-content h2, .episodes-header h2, .guest-section h2 { font-size: 2rem; }
       .episode-card { flex: 0 0 calc(50% - 12px); min-width: 280px; }
     }
     @media (max-width: 640px) {
       .hero h1 { font-size: 2rem; }
-      .hero-tagline { font-size: 1rem; }
-      .hero-buttons { flex-direction: column; align-items: center; }
       .btn { width: 100%; max-width: 280px; justify-content: center; }
-      .platform-links { flex-direction: column; align-items: center; }
-      .platform-link { width: 100%; max-width: 280px; justify-content: center; }
-      .episode-card { flex: 0 0 90%; min-width: 260px; }
-      .section-padding { padding: 60px 0; }
-      .guest-section h2 { font-size: 1.8rem; }
+      .episode-card { flex: 0 0 90%; }
     }
   </style>
-
 </head>
 <body>
 
@@ -308,48 +247,38 @@
         <p>Each episode features interviews with local business owners, community leaders, and industry professionals, offering insight into the real estate market and the vibrant life in West Michigan’s neighborhoods.</p>
         <p>Whether you’re a first-time homebuyer, a seller looking to navigate the market, or simply interested in the happenings in your community, this podcast is the perfect blend of real estate education and community connection.</p>
         <div class="area-focus">Focus: Grand Rapids & Surrounding Areas</div>
+        
+        <div class="about-cta" style="margin-top: 10px;">
+          <a href="#guest-cta" class="btn btn-primary">Join Us as a Guest <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 3: PLATFORMS -->
 <section class="platforms-section" id="listen">
   <div class="container">
     <h3>Subscribe and catch up wherever <span>you listen!</span></h3>
     <div class="platform-links">
-      <a href="https://podcasts.apple.com/us/podcast/the-keys-to-the-community/id1877678950"
-         class="platform-link" target="_blank" rel="noopener">
-        <i class="fa-brands fa-apple"></i> <span>Apple Podcasts</span>
-      </a>
-      <a href="https://open.spotify.com/show/1jJ2BNOFt6NPGoRKnN0DFx"
-         class="platform-link" target="_blank" rel="noopener">
-        <i class="fa-brands fa-spotify"></i> <span>Spotify</span>
-      </a>
-      <a href="https://www.youtube.com/channel/UCYucZ950zotGMvPJbZCB8zw"
-         class="platform-link" target="_blank" rel="noopener">
-        <i class="fa-brands fa-youtube"></i> <span>YouTube</span>
-      </a>
+      <a href="https://podcasts.apple.com/us/podcast/the-keys-to-the-community/id1877678950" class="platform-link" target="_blank" rel="noopener"><i class="fa-brands fa-apple"></i> <span>Apple Podcasts</span></a>
+      <a href="https://open.spotify.com/show/1jJ2BNOFt6NPGoRKnN0DFx" class="platform-link" target="_blank" rel="noopener"><i class="fa-brands fa-spotify"></i> <span>Spotify</span></a>
+      <a href="https://www.youtube.com/channel/UCYucZ950zotGMvPJbZCB8zw" class="platform-link" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> <span>YouTube</span></a>
     </div>
   </div>
 </section>
 
-
-<!-- SECTION 4: EPISODES -->
 <section class="episodes-section section-padding" id="episodes">
   <div class="container">
     <div class="episodes-header">
       <p class="section-tag">Recent Highlights</p>
-      <h2>Watch &amp; Listen</h2>
+      <h2>Watch & Listen</h2>
     </div>
     <div class="carousel-wrapper">
       <div class="carousel" id="episodeCarousel">
-
-        <!-- Episode 1: Introducing the Keys to the Community -->
         <div class="episode-card">
           <a href="https://www.youtube.com/watch?v=lNSfwCtcoMg" target="_blank" rel="noopener">
             <div class="episode-thumbnail">
-              <img src="https://img.youtube.com/vi/lNSfwCtcoMg/sddefault.jpg" alt="Episode 1" loading="lazy">
+              <img src="https://img.youtube.com/vi/lNSfwCtcoMg/sddefault.jpg" alt="Episode 1">
               <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
             </div>
           </a>
@@ -359,72 +288,73 @@
             <a href="https://www.youtube.com/watch?v=lNSfwCtcoMg" class="episode-link" target="_blank" rel="noopener">Watch Now <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
-
-        <!-- Episode 2: Building Health, Wellness, and Community Through Prime IV -->
         <div class="episode-card">
           <a href="https://www.youtube.com/watch?v=kqggfAWQQC8" target="_blank" rel="noopener">
             <div class="episode-thumbnail">
-              <img src="https://img.youtube.com/vi/kqggfAWQQC8/sddefault.jpg" alt="Episode 2" loading="lazy">
+              <img src="https://img.youtube.com/vi/kqggfAWQQC8/sddefault.jpg" alt="Episode 2">
               <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
             </div>
           </a>
           <div class="episode-info">
             <p class="episode-number">Episode 02</p>
-            <h3 class="episode-title">Building Health, Wellness &amp; Community Through Prime IV</h3>
+            <h3 class="episode-title">Building Health, Wellness & Community Through Prime IV</h3>
             <a href="https://www.youtube.com/watch?v=kqggfAWQQC8" class="episode-link" target="_blank" rel="noopener">Watch Now <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
-
-        <!-- Episode 3: Inside Downtown Holland's Growth and Revitalization -->
         <div class="episode-card">
           <a href="https://www.youtube.com/watch?v=Akh49I-WW6Y" target="_blank" rel="noopener">
             <div class="episode-thumbnail">
-              <img src="https://img.youtube.com/vi/Akh49I-WW6Y/sddefault.jpg" alt="Episode 3" loading="lazy">
+              <img src="https://img.youtube.com/vi/Akh49I-WW6Y/sddefault.jpg" alt="Episode 3">
               <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
             </div>
           </a>
           <div class="episode-info">
             <p class="episode-number">Episode 03</p>
-            <h3 class="episode-title">Inside Downtown Holland's Growth &amp; Revitalization</h3>
+            <h3 class="episode-title">Inside Downtown Holland's Growth & Revitalization</h3>
             <a href="https://www.youtube.com/watch?v=Akh49I-WW6Y" class="episode-link" target="_blank" rel="noopener">Watch Now <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
-
       </div>
       <div class="carousel-nav">
-        <button class="carousel-btn" onclick="document.getElementById('episodeCarousel').scrollBy({left:-340,behavior:'smooth'})" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="carousel-btn" onclick="document.getElementById('episodeCarousel').scrollBy({left:340,behavior:'smooth'})" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="carousel-btn" onclick="document.getElementById('episodeCarousel').scrollBy({left:-340,behavior:'smooth'})"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="carousel-btn" onclick="document.getElementById('episodeCarousel').scrollBy({left:340,behavior:'smooth'})"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
     </div>
   </div>
 </section>
 
-
-<section class="guest-section section-padding">
+<section class="guest-section section-padding" id="guest-cta">
   <div class="container">
-    <p class="section-tag" style="color: var(--kw-red); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 8px;">Get Involved</p>
-    <h2 style="margin-bottom: 20px;">Be a Guest on the Show</h2>
+    <h2 style="margin-bottom: 20px;">WHY BE A GUEST ON PHIL’S SHOW?</h2>
     <div class="benefits-grid">
       <div class="benefit-card">
         <i class="fas fa-bullhorn" style="color: var(--kw-red); font-size: 1.8rem; margin-bottom: 15px;"></i>
-        <h4>Share Your Story</h4>
+        <h4>Showcase Your Expertise</h4>
         <p>Highlight your business or community project to our dedicated local listeners.</p>
       </div>
       <div class="benefit-card">
         <i class="fas fa-network-wired" style="color: var(--kw-red); font-size: 1.8rem; margin-bottom: 15px;"></i>
-        <h4>Expand Your Reach</h4>
-        <p>Connect with a broader audience and build your professional network.</p>
+        <h4>Gain a Competitive Edge in West Michigan’s Growing Market</h4>
+        <p>West Michigan’s real estate market is thriving, and your appearance on the podcast lets you tap into this growing demand. Share strategies that set you apart from the competition and attract new opportunities.</p>
       </div>
       <div class="benefit-card">
         <i class="fas fa-chart-line" style="color: var(--kw-red); font-size: 1.8rem; margin-bottom: 15px;"></i>
         <h4>Exposure</h4>
-        <p>Get high-quality audio and video content to share on your own platforms.</p>
+        <p>Connect with an audience of real estate professionals and community members eager for actionable advice. Use this platform to expand your network and open doors to collaborations and growth.</p>
       </div>
     </div>
-    <a href="#" class="btn btn-primary">Apply To Be A Guest</a>
+    <div class="guest-content guest-cta-wrapper">
+      <p>Click on the button below and my production team at <a href="https://iconsofrealestate.com/" class="icons-link" target="_blank" rel="noopener">Icons of Real Estate</a> will get in touch!</p>
+      <a href="https://hub.iconsofrealestate.com/podcasts/310-the-keys-to-the-community" class="btn-guest" target="_blank" rel="noopener">
+        <i class="fa-solid fa-microphone"></i> Apply to Be a Guest Speaker
+      </a>
+    </div>
   </div>
 </section>
 
+<footer>
+  <p>© 2026 The Keys To The Community. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
