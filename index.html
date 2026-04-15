@@ -123,11 +123,6 @@
     /* === EPISODES === */
     .episodes-section { background: var(--accent-gray); }
     .episodes-header { text-align: center; margin-bottom: 48px; }
-    .episodes-header .section-tag {
-      font-family: 'Inter', sans-serif; font-size: 0.8rem;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--kw-red); margin-bottom: 12px; font-weight: 600;
-    }
     .episodes-header h2 { font-size: 2.5rem; color: var(--text-dark); }
     .carousel {
       display: flex; gap: 24px; overflow-x: auto;
@@ -155,14 +150,13 @@
     .episode-number { font-size: 0.75rem; font-weight: 700; color: var(--kw-red); text-transform: uppercase; margin-bottom: 8px; }
     .episode-title { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
     .episode-link { font-size: 0.85rem; color: var(--kw-red); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: 0.3s; }
-    .carousel-nav { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
-    .carousel-btn {
-      width: 44px; height: 44px; border-radius: 50%;
-      border: 2px solid var(--primary-dark); background: transparent;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s ease; color: var(--primary-dark);
-    }
-    .carousel-btn:hover { background: var(--kw-red); border-color: var(--kw-red); color: white; }
+
+    /* === HOST SECTION === */
+    .host-section { background: var(--primary-white); }
+    .host-section h2 { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 24px; text-transform: uppercase; }
+    .host-section p { font-size: 1.05rem; color: var(--text-medium); margin-bottom: 20px; line-height: 1.8; }
+    .brand-promo-h2 { font-size: 2.5rem; color: var(--kw-red) !important; margin-top: 48px; margin-bottom: 16px; }
+    .host-subheading { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 16px; }
 
     /* === GUEST CTA === */
     .guest-section {
@@ -170,11 +164,6 @@
       text-align: center; position: relative; overflow: hidden;
     }
     .guest-content { position: relative; z-index: 2; }
-    .guest-section .section-tag {
-      font-family: 'Inter', sans-serif; font-size: 0.8rem;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--kw-red); margin-bottom: 12px; font-weight: 600;
-    }
     .guest-section h2 { font-size: 2.8rem; margin-bottom: 20px; }
     .benefits-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -203,8 +192,6 @@
     }
     .btn-guest:hover { background: var(--kw-red-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(213,0,0,0.4); }
 
-    footer { background: #111; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 24px; }
-
     @media (max-width: 992px) {
       .about-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
       .about-image-wrapper { display: flex; justify-content: center; }
@@ -216,6 +203,7 @@
       .hero h1 { font-size: 2rem; }
       .btn { width: 100%; max-width: 280px; justify-content: center; }
       .episode-card { flex: 0 0 90%; }
+      .brand-promo-h2, .host-section h2 { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -270,8 +258,7 @@
 <section class="episodes-section section-padding" id="episodes">
   <div class="container">
     <div class="episodes-header">
-      <h2>Recent Highlights from The Keys To The Community
-</h2>
+      <h2>Recent Highlights from The Keys To The Community</h2>
     </div>
     <div class="carousel-wrapper">
       <div class="carousel" id="episodeCarousel">
@@ -319,6 +306,18 @@
   </div>
 </section>
 
+<section class="host-section section-padding">
+  <div class="container">
+    <h2>ABOUT PHIL NYKAMP</h2>
+    <p>Phil Nykamp is a real estate agent with Keller Williams Harbortown, helping people confidently buy and sell homes throughout West Michigan. With deep local roots, 28 years of customer service experience, and a passion for community, Phil brings a wealth of knowledge on local neighborhoods, current market conditions, and what it takes to make the real estate experience exceptional.</p>
+    <p>On The Keys to the Community, Phil combines his real estate expertise with his love for connecting people. Each episode features interviews with local business owners, community leaders, and industry professionals, offering insight into the real estate market and the vibrant life in West Michigan’s neighborhoods. The Keys to the Community is more than just about buying and selling, it’s about building relationships and loving where you live. Tune in for inspiring stories, real estate tips, and local happenings that make the community thrive.</p>
+    
+    <h2 class="brand-promo-h2">Want to Spread The Word About Your Brand Through Podcasting?</h2>
+    <div class="host-subheading">The Keys To The Community is looking for guest speakers!</div>
+    <p>Let Phil guide you to success by sharing your story and insights on his podcast. Got expertise that West Michigan needs to hear? Join Phil for a real conversation that positions you as a trusted voice in the community. Your experience will help elevate both your brand and your impact in the West Michigan real estate world.</p>
+  </div>
+</section>
+
 <section class="guest-section section-padding" id="guest-cta">
   <div class="container">
     <h2 style="margin-bottom: 20px;">WHY BE A GUEST ON PHIL’S SHOW?</h2>
@@ -347,5 +346,6 @@
     </div>
   </div>
 </section>
+
 </body>
 </html>
