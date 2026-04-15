@@ -21,6 +21,7 @@
     img { max-width: 100%; height: auto; display: block; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     .section-padding { padding: 80px 0; }
+    
     :root {
       --kw-red: #D50000;
       --kw-red-hover: #A30000;
@@ -31,7 +32,20 @@
       --text-medium: #555555;
       --text-light: #888888;
       --stripe-color: #e8e8e8;
+      --separator-color: #e0e0e0;
     }
+
+    /* === UTILITIES === */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; font-family: 'Inter', sans-serif;
+      font-size: 0.95rem; font-weight: 600; border-radius: 4px;
+      cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent;
+    }
+    .btn-primary { background: var(--kw-red); color: var(--primary-white); border-color: var(--kw-red); }
+    .btn-primary:hover { background: var(--kw-red-hover); border-color: var(--kw-red-hover); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--primary-white); border-color: var(--primary-white); }
+    .btn-outline:hover { background: var(--primary-white); color: var(--primary-dark); transform: translateY(-2px); }
 
     /* === HERO === */
     .hero {
@@ -72,18 +86,7 @@
     .hero-tagline { font-size: 1.25rem; font-weight: 300; margin-bottom: 40px; opacity: 0.9; }
     .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 32px; font-family: 'Inter', sans-serif;
-      font-size: 0.95rem; font-weight: 600; border-radius: 4px;
-      cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent;
-    }
-    .btn-primary { background: var(--kw-red); color: var(--primary-white); border-color: var(--kw-red); }
-    .btn-primary:hover { background: var(--kw-red-hover); border-color: var(--kw-red-hover); transform: translateY(-2px); }
-    .btn-outline { background: transparent; color: var(--primary-white); border-color: var(--primary-white); }
-    .btn-outline:hover { background: var(--primary-white); color: var(--primary-dark); transform: translateY(-2px); }
-
-    /* === ABOUT === */
+    /* === ABOUT SHOW === */
     .about-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 60px; align-items: stretch;
@@ -104,6 +107,7 @@
       background: var(--accent-gray); border-left: 4px solid var(--kw-red);
       font-weight: 600; color: var(--text-dark); font-size: 0.95rem; margin-bottom: 24px;
     }
+    .about-cta { margin-top: 10px; }
 
     /* === PLATFORMS === */
     .platforms-section { background: var(--primary-dark); padding: 60px 0; text-align: center; }
@@ -155,8 +159,9 @@
     .host-section { background: var(--primary-white); }
     .host-section h2 { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 24px; text-transform: uppercase; }
     .host-section p { font-size: 1.05rem; color: var(--text-medium); margin-bottom: 20px; line-height: 1.8; }
-    .brand-promo-separator { border: 0; height: 1px; background: #e0e0e0; margin: 56px 0 40px; width: 100%; }
-    .brand-promo-h2 { font-size: 2.1rem; color: var(--kw-red) !important; margin-bottom: 16px; }
+    
+    .brand-promo-separator { border: 0; height: 1px; background: var(--separator-color); margin: 56px 0 40px; width: 100%; }
+    .brand-promo-h2 { font-size: 2.1rem; color: var(--kw-red); margin-bottom: 16px; }
     .host-subheading { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 16px; }
 
     /* === GUEST CTA === */
@@ -175,7 +180,7 @@
       border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);
       transition: all 0.3s ease;
     }
-    .benefit-card:hover { border-color: var(--kw-red); transform: translateY(-4px); }
+    .benefit-card i { color: var(--kw-red); font-size: 1.8rem; margin-bottom: 15px; }
     .benefit-card h4 { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; color: var(--kw-red); text-transform: uppercase; margin-bottom: 12px; }
     .benefit-card p { font-size: 0.95rem; opacity: 0.8; line-height: 1.7; }
 
@@ -193,6 +198,7 @@
     }
     .btn-guest:hover { background: var(--kw-red-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(213,0,0,0.4); }
 
+    /* === MEDIA QUERIES === */
     @media (max-width: 992px) {
       .about-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
       .about-image-wrapper { display: flex; justify-content: center; }
@@ -201,10 +207,11 @@
       .episode-card { flex: 0 0 calc(50% - 12px); min-width: 280px; }
     }
     @media (max-width: 640px) {
-      .hero h1 { font-size: 2rem; }
+      .hero h1 { font-size: 2.2rem; }
       .btn { width: 100%; max-width: 280px; justify-content: center; }
       .episode-card { flex: 0 0 90%; }
       .brand-promo-h2, .host-section h2 { font-size: 1.8rem; }
+      .guest-section h2 { font-size: 2rem; }
     }
   </style>
 </head>
@@ -218,7 +225,7 @@
     <p class="hero-tagline">Your go-to podcast for real estate education and community connection in West Michigan — Hosted by Phil Nykamp</p>
     <div class="hero-buttons">
       <a href="#about" class="btn btn-primary"><i class="fas fa-play"></i> Listen Now</a>
-      <a href="https://youtube.com" class="btn btn-outline"><i class="fab fa-youtube"></i> Watch on YouTube</a>
+      <a href="https://youtube.com" class="btn btn-outline" target="_blank"><i class="fab fa-youtube"></i> Watch on YouTube</a>
     </div>
   </div>
 </section>
@@ -237,7 +244,7 @@
         <p>Whether you’re a first-time homebuyer, a seller looking to navigate the market, or simply interested in the happenings in your community, this podcast is the perfect blend of real estate education and community connection.</p>
         <div class="area-focus">Focus: Grand Rapids & Surrounding Areas</div>
         
-        <div class="about-cta" style="margin-top: 10px;">
+        <div class="about-cta">
           <a href="#guest-cta" class="btn btn-primary">Join Us as a Guest <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
@@ -250,7 +257,7 @@
     <h3>Subscribe and catch up on all of The <span>Keys To The Community</span>’s episodes on your favorite podcast platform!</h3>
     <div class="platform-links">
       <a href="https://podcasts.apple.com/us/podcast/the-keys-to-the-community/id1877678950" class="platform-link" target="_blank" rel="noopener"><i class="fa-brands fa-apple"></i> <span>Apple Podcasts</span></a>
-      <a href="https://open.spotify.com/show/1jJ2BNOFt6NPGoRKnN0DFx" class="platform-link" target="_blank" rel="noopener"><i class="fa-brands fa-spotify"></i> <span>Spotify</span></a>
+      <a href="https://open.spotify.com/show/0" class="platform-link" target="_blank" rel="noopener"><i class="fa-brands fa-spotify"></i> <span>Spotify</span></a>
       <a href="https://www.youtube.com/channel/UCYucZ950zotGMvPJbZCB8zw" class="platform-link" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> <span>YouTube</span></a>
     </div>
   </div>
@@ -323,22 +330,22 @@
 
 <section class="guest-section section-padding" id="guest-cta">
   <div class="container">
-    <h2 style="margin-bottom: 20px;">WHY BE A GUEST ON PHIL’S SHOW?</h2>
+    <h2>WHY BE A GUEST ON PHIL’S SHOW?</h2>
     <div class="benefits-grid">
       <div class="benefit-card">
-        <i class="fas fa-bullhorn" style="color: var(--kw-red); font-size: 1.8rem; margin-bottom: 15px;"></i>
+        <i class="fas fa-bullhorn"></i>
         <h4>Showcase Your Expertise</h4>
         <p>Highlight your business or community project to our dedicated local listeners.</p>
       </div>
       <div class="benefit-card">
-        <i class="fas fa-network-wired" style="color: var(--kw-red); font-size: 1.8rem; margin-bottom: 15px;"></i>
-        <h4>Gain a Competitive Edge in West Michigan’s Growing Market</h4>
-        <p>West Michigan’s real estate market is thriving, and your appearance on the podcast lets you tap into this growing demand. Share strategies that set you apart from the competition and attract new opportunities.</p>
+        <i class="fas fa-network-wired"></i>
+        <h4>Gain a Competitive Edge</h4>
+        <p>West Michigan’s real estate market is thriving. Share strategies that set you apart from the competition and attract new opportunities.</p>
       </div>
       <div class="benefit-card">
-        <i class="fas fa-chart-line" style="color: var(--kw-red); font-size: 1.8rem; margin-bottom: 15px;"></i>
-        <h4>Exposure</h4>
-        <p>Connect with an audience of real estate professionals and community members eager for actionable advice. Use this platform to expand your network and open doors to collaborations and growth.</p>
+        <i class="fas fa-chart-line"></i>
+        <h4>Engage a High-Impact Audience</h4>
+        <p>Connect with an audience of real estate professionals and community members eager for actionable advice. Expand your network and impact.</p>
       </div>
     </div>
     <div class="guest-content guest-cta-wrapper">
